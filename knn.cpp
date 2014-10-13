@@ -56,6 +56,7 @@ bool KNN::classifyingInstance(Instance target, vector<Instance> trainingData){
 	vector <Neighbor> nearest;
 
 	double distance;
+	int k = 3; // Number of k neighbors to compare. 
 
 	for (unsigned int i = 0; i < trainingData.size(); i++){
 		distance = calculateDistance(target, trainingData[i]);
@@ -68,7 +69,7 @@ bool KNN::classifyingInstance(Instance target, vector<Instance> trainingData){
 
 	sort (neigh.begin(), neigh.end(), compare);
 
-	for (int i = 0; i < 3; i++){
+	for (int i = 0; i < k; i++){
 		nearest.push_back(neigh[i]);
 	}
 

@@ -16,7 +16,16 @@ using namespace std;
 
 int main (int argc, char* argv []){
 	if(argc == 1) {
-        cout << "ERROR: You need to pass the dataset." << endl;
+        cout << "ERROR: You need to pass the full dataset (./KNN dataset)" << 
+                " or the training set and test set (./KNN trainset testset)." << endl;
+    }
+
+    if (argc == 2){
+    	string dataset = argv[1];
+    	FileManager fm;
+
+    	fm.generatingRandomTests(dataset);
+
     }
 
     if (argc == 3){
@@ -35,7 +44,6 @@ int main (int argc, char* argv []){
 
 	   	cout << "Precision of the algorithm on this test database: " << fixed << setprecision (2) 
 	   	     << knn.getPrecision (data, test) * 100 << "%"<< endl;
-
 
     }
 

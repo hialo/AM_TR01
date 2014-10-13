@@ -2,36 +2,50 @@
 
 FileManager::FileManager(){}
 
+void FileManager::writingFile (string text, string type){
+	ofstream output;
+	type += "_data_file";
+
+	const char* filepath = type.c_str();
+
+	output.open (filepath);
+
+	output << text;
+
+	output.close();
+}
+
+
 void FileManager::generatingRandomTests (string filepath){
-/*	int size;
-	int test_size = size/10; // Test data has 10% of total cases.
-
-	bool *used = new bool[size];
-	string testfile = "";
-	string datafile = "";
-
-
 	ifstream file (filepath.c_str());
 
 	string line;
+	string test = "";
+	string training = "";
+	int count = 1;
 
 	if(!file.is_open()) {
         cout << "Impossible to open the file!!!" << endl;
         exit(-1);
     }
 
-    while (getline(file, line)){
-    	if (count < test_size && !used){
-    		testfile += line + "\n";
-    	}
+    cout << "Generating training and test cases..." << endl;
 
-    	else if (count >= test_size && !used)
-    		datafile += line + "\n";
+    while (getline(file, line)){
+    	if (count % 5 == 0)
+    		test += line + "\n";
+    	
+    	else 
+    		training += line + "\n";
 
     	count++;
     }
 
-    return set;*/
+    writingFile(test, "test");
+    writingFile(training, "train");
+
+    cout << "Done." << endl;
+
 }
 
 vector <Instance> FileManager::readingFile(string filepath){

@@ -15,12 +15,10 @@ using namespace std;
 
 class FileManager {
   public:
-
     FileManager();
     vector <Instance> readingFile(string filepath);
     void generatingRandomTests (string filepath);
-
-  private:
+    void writingFile (string text, string type);
 
 };
 
